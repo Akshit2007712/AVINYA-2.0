@@ -1,26 +1,37 @@
-import { useMemo } from "react";
+import { useEffect, useState } from "react";
 
-/** Lightweight CSS-only particle field. Zero deps, cheap on paint. */
+type Dot = {
+  left: number;
+  top: number;
+  size: number;
+  delay: number;
+  duration: number;
+  opacity: number;
+};
+
+/** Lightweight CSS-only particle field. Mount-only to avoid SSR hydration
+ *  mismatch caused by Math.random(). */
 export function Particles({ count = 32 }: { count?: number }) {
-  const dots = useMemo(
-    () =>
-      Array.from({ length: count }, (_, i) => ({
+  const [dots, setDots] = useState<Dot[]>([]);
+
+  useEffect(() => {
+    setDots(
+      Array.from({ length: count }, () => ({
         left: Math.random() * 100,
         top: Math.random() * 100,
         size: 1 + Math.random() * 2,
         delay: Math.random() * 6,
         duration: 6 + Math.random() * 8,
         opacity: 0.3 + Math.random() * 0.5,
-        key: i,
       })),
-    [count],
-  );
+    );
+  }, [count]);
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {dots.map((d) => (
+      {dots.map((d, i) => (
         <span
-          key={d.key}
+          key={i}
           className="absolute rounded-full bg-primary"
           style={{
             left: `${d.left}%`,
