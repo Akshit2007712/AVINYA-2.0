@@ -88,7 +88,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         property: "og:description",
         content:
-          "The flagship college tech festival. Hackathons, robotics, drone racing, design — March 2026.",
+          "The flagship college tech festival. Hackathons, robotics, drone racing, design — March 2027.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
