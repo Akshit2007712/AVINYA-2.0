@@ -4,27 +4,29 @@ import { useEffect, useState } from "react";
 const TARGET = new Date("2027-03-04T09:00:00+05:30").getTime();
 
 function diff() {
-  const now = Date.now();
-  const d = Math.max(0, TARGET - now);
-  const days = Math.floor(d / 86400000);
-  const hours = Math.floor((d % 86400000) / 3600000);
-  const mins = Math.floor((d % 3600000) / 60000);
-  const secs = Math.floor((d % 60000) / 1000);
-  return { days, hours, mins, secs };
+  const d = Math.max(0, TARGET - Date.now());
+  return {
+    days: Math.floor(d / 86400000),
+    hours: Math.floor((d % 86400000) / 3600000),
+    mins: Math.floor((d % 3600000) / 60000),
+    secs: Math.floor((d % 60000) / 1000),
+  };
 }
 
 export function Countdown() {
-  const [t, setT] = useState(diff());
+  const [t, setT] = useState<ReturnType<typeof diff> | null>(null);
+
   useEffect(() => {
+    setT(diff());
     const id = setInterval(() => setT(diff()), 1000);
     return () => clearInterval(id);
   }, []);
 
   const items = [
-    { v: t.days, l: "Days" },
-    { v: t.hours, l: "Hrs" },
-    { v: t.mins, l: "Min" },
-    { v: t.secs, l: "Sec" },
+    { v: t?.days, l: "Days" },
+    { v: t?.hours, l: "Hrs" },
+    { v: t?.mins, l: "Min" },
+    { v: t?.secs, l: "Sec" },
   ];
 
   return (
@@ -34,7 +36,7 @@ export function Countdown() {
           <span
             className={`text-3xl md:text-4xl tabular-nums ${i === 3 ? "text-primary text-glow" : ""}`}
           >
-            {it.v.toString().padStart(2, "0")}
+            {it.v === undefined ? "--" : it.v.toString().padStart(2, "0")}
           </span>
           <span className="mt-1 text-[9px] uppercase tracking-[0.3em] text-muted-foreground">
             {it.l}
