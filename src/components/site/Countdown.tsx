@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
-// Fest date — March 4, 2026 09:00 IST
-const TARGET = new Date("2026-03-04T09:00:00+05:30").getTime();
+// Fest date — March 4, 2027 09:00 IST
+const TARGET = new Date("2027-03-04T09:00:00+05:30").getTime();
 
 function diff() {
   const now = Date.now();
