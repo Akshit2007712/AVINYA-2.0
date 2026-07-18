@@ -1,0 +1,128 @@
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { motion } from "framer-motion";
+import { SiteShell } from "@/components/site/SiteShell";
+import { Hero } from "@/components/sections/Hero";
+import { EventsGrid } from "@/components/sections/EventsGrid";
+import { TimelineSection } from "@/components/sections/TimelineSection";
+import { GalleryMasonry } from "@/components/sections/GalleryMasonry";
+import { SponsorsMarquee } from "@/components/sections/SponsorsMarquee";
+import { ContactForm } from "@/components/sections/ContactForm";
+
+export const Route = createFileRoute("/")({
+  component: HomePage,
+});
+
+function SectionHeader({
+  eyebrow,
+  title,
+  align = "left",
+}: {
+  eyebrow: string;
+  title: React.ReactNode;
+  align?: "left" | "center";
+}) {
+  return (
+    <motion.header
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{ duration: 0.7 }}
+      className={`mb-14 ${align === "center" ? "text-center" : ""}`}
+    >
+      <p className={`font-mono text-[10px] tracking-[0.4em] uppercase text-primary mb-4 ${align === "center" ? "" : ""}`}>
+        {eyebrow}
+      </p>
+      <h2 className="text-4xl md:text-5xl font-bold tracking-tight">{title}</h2>
+    </motion.header>
+  );
+}
+
+function HomePage() {
+  return (
+    <SiteShell>
+      <Hero />
+
+      {/* Featured Events */}
+      <section id="events" className="py-24 px-6 md:px-10 max-w-7xl mx-auto">
+        <SectionHeader
+          eyebrow="03 / Selected Operations"
+          title={
+            <>
+              Featured <span className="text-primary">Tracks</span>
+            </>
+          }
+        />
+        <EventsGrid limit={3} />
+        <div className="mt-12 text-center">
+          <Link
+            to="/events"
+            className="inline-flex px-8 py-4 glass-panel uppercase text-xs tracking-[0.25em] font-mono hover:bg-white/5 transition-all"
+          >
+            View all events →
+          </Link>
+        </div>
+      </section>
+
+      {/* Timeline */}
+      <section id="timeline" className="py-24 px-6 md:px-10">
+        <div className="max-w-4xl mx-auto">
+          <SectionHeader
+            eyebrow="Sequence of Events"
+            title="Operational Timeline"
+            align="center"
+          />
+          <TimelineSection />
+        </div>
+      </section>
+
+      {/* Gallery */}
+      <section id="gallery" className="py-24 px-6 md:px-10 max-w-7xl mx-auto">
+        <SectionHeader eyebrow="Archive · 2025" title="Signals from the Last Cycle" />
+        <GalleryMasonry />
+      </section>
+
+      {/* Sponsors */}
+      <section id="sponsors" className="py-20 border-y border-white/5 bg-background/40">
+        <div className="max-w-7xl mx-auto px-6 md:px-10">
+          <p className="text-center font-mono text-[10px] tracking-[0.4em] uppercase text-muted-foreground mb-8">
+            Presented in partnership with
+          </p>
+          <SponsorsMarquee />
+        </div>
+      </section>
+
+      {/* Contact */}
+      <section id="contact" className="py-24 px-6 md:px-10 max-w-7xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-16">
+          <div>
+            <SectionHeader
+              eyebrow="Open Frequency"
+              title={
+                <>
+                  Send a <span className="text-primary">Transmission</span>
+                </>
+              }
+            />
+            <p className="text-muted-foreground max-w-md leading-relaxed mb-6">
+              Sponsorship, collaboration, or a question about the fest — drop us a
+              message and someone from the crew will get back to you.
+            </p>
+            <dl className="space-y-3 font-mono text-xs uppercase tracking-widest text-muted-foreground">
+              <div>
+                <dt className="text-primary">Email</dt>
+                <dd>hello@avinya.tech</dd>
+              </div>
+              <div>
+                <dt className="text-primary">Campus</dt>
+                <dd>Faculty of Technology, Main Auditorium</dd>
+              </div>
+            </dl>
+          </div>
+          <div>
+            <ContactForm />
+          </div>
+        </div>
+      </section>
+    </SiteShell>
+  );
+}
