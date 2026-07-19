@@ -7,6 +7,7 @@ import { TimelineSection } from "@/components/sections/TimelineSection";
 import { GalleryMasonry } from "@/components/sections/GalleryMasonry";
 import { SponsorsMarquee } from "@/components/sections/SponsorsMarquee";
 import { ContactForm } from "@/components/sections/ContactForm";
+import { StaffSections, TeamsSection } from "@/components/sections/TeamSections";
 
 export const Route = createFileRoute("/")({
   component: HomePage,
@@ -79,6 +80,34 @@ function HomePage() {
       <section id="gallery" className="py-24 px-6 md:px-10 max-w-7xl mx-auto">
         <SectionHeader eyebrow="Archive · 2025" title="Signals from the Last Cycle" />
         <GalleryMasonry />
+      </section>
+
+      {/* Faculty / Mentors / Heads */}
+      <section id="people" className="py-24 px-6 md:px-10 max-w-7xl mx-auto">
+        <SectionHeader
+          eyebrow="Leadership Grid"
+          title={
+            <>
+              Faculty, Mentors & <span className="text-primary">Heads</span>
+            </>
+          }
+          align="center"
+        />
+        <StaffSections />
+      </section>
+
+      {/* Teams */}
+      <section id="teams" className="py-24 px-6 md:px-10 max-w-7xl mx-auto">
+        <SectionHeader
+          eyebrow="Operational Crew"
+          title={
+            <>
+              The <span className="text-primary">Team</span>
+            </>
+          }
+          align="center"
+        />
+        <TeamsSection />
       </section>
 
       {/* Sponsors */}
