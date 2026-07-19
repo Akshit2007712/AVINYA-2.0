@@ -163,3 +163,34 @@ export const adminDeleteGallery = createServerFn({ method: "POST" })
     if (error) throw new Error(error.message);
     return { ok: true };
   });
+
+// ---------- Image uploads ----------
+
+const uploadInput = z.object({
+  filename: z.string().min(1).max(200),
+  contentType: z.string().min(1).max(120),
+  dataBase64: z.string().min(10).max(15_000_000),
+  folder: z.enum(["team", "gallery"]).default("team"),
+});
+
+export const adminUploadImage = createServerFn({ method: "POST" })
+  .inputValidator((data: unknown) => uploadInput.parse(data))
+  .handler(async ({ data }) => {
+    await requireAdmin();
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    const buf = Buffer.from(data.dataBase64, "base64");
+    if (buf.length > 8 * 1024 * 1024) throw new Error("Image too large (max 8MB)");
+    const ext =
+      (data.filename.split(".").pop() || "jpg")
+        .toLowerCase()
+        .replace(/[^a-z0-9]/g, "")
+        .slice(0, 5) || "jpg";
+    const key = `${data.folder}/${Date.now()}-${Math.random().toString(36).slice(2, 8)}.${ext}`;
+    const { error } = await supabaseAdmin.storage.from("site-media").upload(key, buf, {
+      contentType: data.contentType,
+      upsert: false,
+    });
+    if (error) throw new Error(error.message);
+    const { data: pub } = supabaseAdmin.storage.from("site-media").getPublicUrl(key);
+    return { url: pub.publicUrl };
+  });
