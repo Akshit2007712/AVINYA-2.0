@@ -24,6 +24,7 @@ export function Footer() {
           <a href="#" className="hover:text-primary transition-colors">Twitter</a>
           <a href="#" className="hover:text-primary transition-colors">Instagram</a>
           <a href="#" className="hover:text-primary transition-colors">Discord</a>
+          <Link to="/admin" className="hover:text-primary transition-colors">Admin</Link>
         </div>
       </div>
     </footer>

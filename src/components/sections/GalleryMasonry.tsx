@@ -1,14 +1,30 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { GALLERY } from "@/data/site";
+import { listGalleryImages } from "@/lib/site-data.functions";
 import { X } from "lucide-react";
+
+type Item = { src: string; alt: string };
 
 export function GalleryMasonry() {
   const [open, setOpen] = useState<number | null>(null);
+  const { data } = useQuery({
+    queryKey: ["gallery-images"],
+    queryFn: () => listGalleryImages(),
+    staleTime: 60_000,
+  });
+
+  const dbItems: Item[] = (data ?? []).map((g) => ({
+    src: g.image_url,
+    alt: g.caption ?? "Gallery image",
+  }));
+  const items: Item[] = dbItems.length ? dbItems : GALLERY;
+
   return (
     <>
       <div className="columns-2 md:columns-3 gap-4 [column-fill:_balance]">
-        {GALLERY.map((img, i) => (
+        {items.map((img, i) => (
           <motion.button
             key={i}
             initial={{ opacity: 0, y: 24 }}
@@ -30,7 +46,7 @@ export function GalleryMasonry() {
       </div>
 
       <AnimatePresence>
-        {open !== null && (
+        {open !== null && items[open] && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -49,8 +65,8 @@ export function GalleryMasonry() {
               initial={{ scale: 0.92, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
-              src={GALLERY[open].src}
-              alt={GALLERY[open].alt}
+              src={items[open].src}
+              alt={items[open].alt}
               className="max-h-[85vh] max-w-full object-contain"
             />
           </motion.div>

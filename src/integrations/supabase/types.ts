@@ -220,6 +220,45 @@ export type Database = {
         }
         Relationships: []
       }
+      team_members: {
+        Row: {
+          bio: string | null
+          category: Database["public"]["Enums"]["team_category"]
+          created_at: string
+          id: string
+          image_url: string | null
+          name: string
+          published: boolean
+          role: string | null
+          sort_order: number
+          updated_at: string
+        }
+        Insert: {
+          bio?: string | null
+          category: Database["public"]["Enums"]["team_category"]
+          created_at?: string
+          id?: string
+          image_url?: string | null
+          name: string
+          published?: boolean
+          role?: string | null
+          sort_order?: number
+          updated_at?: string
+        }
+        Update: {
+          bio?: string | null
+          category?: Database["public"]["Enums"]["team_category"]
+          created_at?: string
+          id?: string
+          image_url?: string | null
+          name?: string
+          published?: boolean
+          role?: string | null
+          sort_order?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           created_at: string
@@ -256,6 +295,15 @@ export type Database = {
     }
     Enums: {
       app_role: "admin" | "user"
+      team_category:
+        | "faculty_coordinator"
+        | "mentor"
+        | "head"
+        | "creative"
+        | "event_management"
+        | "literary"
+        | "social_media"
+        | "anchoring"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -384,6 +432,16 @@ export const Constants = {
   public: {
     Enums: {
       app_role: ["admin", "user"],
+      team_category: [
+        "faculty_coordinator",
+        "mentor",
+        "head",
+        "creative",
+        "event_management",
+        "literary",
+        "social_media",
+        "anchoring",
+      ],
     },
   },
 } as const
