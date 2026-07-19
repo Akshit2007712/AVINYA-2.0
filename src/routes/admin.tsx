@@ -18,6 +18,7 @@ import {
 } from "@/lib/admin.functions";
 import type { TeamCategory } from "@/lib/site-data.functions";
 import { Trash2, Plus, LogOut, Save, X } from "lucide-react";
+import { ImageUpload } from "@/components/admin/ImageUpload";
 
 export const Route = createFileRoute("/admin")({
   head: () => ({
@@ -377,17 +378,16 @@ function MemberForm({
             onChange={(e) => setV({ ...v, sort_order: Number(e.target.value) })}
           />
         </label>
-        <label className="md:col-span-2 text-xs">
+        <div className="md:col-span-2 text-xs">
           <span className="mb-1 block text-muted-foreground uppercase tracking-widest text-[10px] font-mono">
-            Image URL
+            Photo
           </span>
-          <input
-            className={field}
-            placeholder="https://…"
-            value={v.image_url ?? ""}
-            onChange={(e) => setV({ ...v, image_url: e.target.value })}
+          <ImageUpload
+            value={v.image_url}
+            onChange={(url) => setV({ ...v, image_url: url })}
+            folder="team"
           />
-        </label>
+        </div>
         <label className="md:col-span-2 text-xs">
           <span className="mb-1 block text-muted-foreground uppercase tracking-widest text-[10px] font-mono">
             Short bio (optional)
@@ -500,16 +500,16 @@ function GalleryManager() {
               <X className="size-4" />
             </button>
           </div>
-          <label className="block text-xs">
+          <div className="block text-xs">
             <span className="mb-1 block text-muted-foreground uppercase tracking-widest text-[10px] font-mono">
-              Image URL
+              Image
             </span>
-            <input
-              className={field}
-              value={editing.image_url ?? ""}
-              onChange={(e) => setEditing({ ...editing, image_url: e.target.value })}
+            <ImageUpload
+              value={editing.image_url}
+              onChange={(url) => setEditing({ ...editing, image_url: url })}
+              folder="gallery"
             />
-          </label>
+          </div>
           <label className="block text-xs">
             <span className="mb-1 block text-muted-foreground uppercase tracking-widest text-[10px] font-mono">
               Caption
