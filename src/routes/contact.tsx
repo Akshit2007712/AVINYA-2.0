@@ -44,21 +44,19 @@ function ContactPage() {
             <dl className="space-y-4 font-mono text-xs uppercase tracking-widest">
               <div>
                 <dt className="text-primary text-[10px] mb-1">Email</dt>
-                <dd>hello@avinya.tech</dd>
+                <dd>societytheempirical@gmail.com</dd>
               </div>
               <div>
                 <dt className="text-primary text-[10px] mb-1">Campus</dt>
                 <dd className="text-muted-foreground">
-                  Faculty of Technology<br />
-                  Main Auditorium, Block C
+                  Guru Tegh Bahadur 4th Centenary College
                 </dd>
               </div>
               <div>
                 <dt className="text-primary text-[10px] mb-1">Social</dt>
                 <dd className="flex gap-4 text-muted-foreground">
-                  <a href="#" className="hover:text-primary transition-colors">Twitter</a>
-                  <a href="#" className="hover:text-primary transition-colors">Instagram</a>
-                  <a href="#" className="hover:text-primary transition-colors">Discord</a>
+                  <a href="https://www.instagram.com/the_empirical_society?igsh=MW1zY2RoZ2Iwb2c4MQ==" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Instagram</a>
+                  <a href="https://www.linkedin.com/company/the-empirical-society/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">LinkedIn</a>
                 </dd>
               </div>
             </dl>

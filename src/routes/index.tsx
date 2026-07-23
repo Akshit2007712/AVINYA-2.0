@@ -169,11 +169,11 @@ function HomePage() {
             <dl className="space-y-3 font-mono text-xs uppercase tracking-widest text-muted-foreground">
               <div>
                 <dt className="text-primary">Email</dt>
-                <dd>hello@avinya.tech</dd>
+                <dd>societytheempirical@gmail.com</dd>
               </div>
               <div>
                 <dt className="text-primary">Campus</dt>
-                <dd>Faculty of Technology, Main Auditorium</dd>
+                <dd>Guru Tegh Bahadur 4th Centenary College</dd>
               </div>
             </dl>
           </div>
