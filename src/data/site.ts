@@ -22,8 +22,8 @@ export type Event = {
 
 export const EVENTS: Event[] = [
   {
-    slug: "turin-trial",
-    title: "TURIN TRIAL",
+    slug: "turing-trial",
+    title: "TURING TRIAL",
     category: "AI & Research",
     short: "An evaluation matrix pitting complex intelligence networks against human parsing protocols. Dive deep into prompt engine...",
     long: "An evaluation matrix pitting complex intelligence networks against human parsing protocols. Dive deep into prompt engineering...",
@@ -72,8 +72,8 @@ export const EVENTS: Event[] = [
     venue: "Cyber Lab 01"
   },
   {
-    slug: "case-tactics",
-    title: "CASE TACTICS",
+    slug: "case-tactix",
+    title: "CASE TACTIX",
     category: "Management",
     short: "Resolve high-impact economic corporate gridlocks under structural systemic limitations. Optimize resources and deliver s...",
     long: "Resolve high-impact economic corporate gridlocks under structural systemic limitations. Optimize resources and deliver solutions...",

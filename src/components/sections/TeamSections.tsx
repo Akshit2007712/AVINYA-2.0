@@ -36,20 +36,20 @@ function MemberCard({ m, i, size = "md" }: { m: Member; i: number; size?: "lg" |
       transition={{ duration: 0.6, delay: (i % 4) * 0.06 }}
       className="group glass-panel overflow-hidden hover-glow transition-all flex flex-col"
     >
-      <div className={`relative w-full ${dims} overflow-hidden bg-white/5 flex-shrink-0`}>
+      <div className={`relative w-full ${dims} overflow-hidden bg-white/5 flex-shrink-0 flex items-center justify-center`}>
         {m.image_url ? (
           <img
             src={m.image_url}
             alt={m.name}
             loading="lazy"
-            className="w-full h-full object-cover object-top grayscale-[0.25] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+            className="w-full h-full object-cover object-top grayscale-[0.15] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center text-primary/50">
             <User className="size-12" />
           </div>
         )}
-        <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/10 to-transparent" />
       </div>
       <div className="p-4 flex flex-col flex-1">
         <h3
@@ -162,19 +162,21 @@ export function StaffSections() {
   );
 }
 
+// Maps DB category values → display labels
 const TEAM_LABELS: Record<string, string> = {
-  "TURING TRIAL": "Turing Trial",
-  "KILL CODE": "Kill Code",
-  SYNTHORA: "Synthora",
-  "BINARY BLITZ": "Binary Blitz",
-  THINKVERSE: "Thinkverse",
-  "CASE TACTICS": "Case Tactics",
-  "CODE WHIRL": "Code Whirl",
-  "CUISINE COSMOS": "Cuisine Cosmos",
-  DESIGNOPS: "DesignOps",
+  "TURING TRIAL":    "Turing Trial",
+  "KILL CODE":       "Kill Code",
+  SYNTHORA:          "Synthora",
+  "BINARY BLITZ":    "Binary Blitz",
+  THINKVERSE:        "Thinkverse",
+  "CASE TACTICS":    "Case Tactix",   // DB stores CASE TACTICS, display as Case Tactix
+  "CODE WHIRL":      "Code Whirl",
+  "CUISINE COSMOS":  "Cuisine Cosmos",
+  DESIGNOPS:         "DesignOps",
   "COLOSSAL-A-PITCH": "Colossal-A-Pitch",
 };
 
+// Order must match exact DB category values
 const TEAM_ORDER: TeamCategory[] = [
   "TURING TRIAL",
   "KILL CODE",
@@ -195,7 +197,16 @@ export function TeamsSection() {
   return (
     <div className="space-y-20">
       {TEAM_ORDER.map((cat) => {
-        const members = all.filter((m) => m.category === cat);
+        // Filter by exact DB category, sort leads first then by sort_order
+        const members = all
+          .filter((m) => m.category === cat)
+          .sort((a, b) => {
+            const aIsLead = a.role?.toUpperCase().includes("LEAD") ? 0 : 1;
+            const bIsLead = b.role?.toUpperCase().includes("LEAD") ? 0 : 1;
+            if (aIsLead !== bIsLead) return aIsLead - bIsLead;
+            return a.sort_order - b.sort_order;
+          });
+
         return (
           <div key={cat}>
             {/* Prominent team name header */}
