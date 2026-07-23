@@ -33,37 +33,35 @@ export function Hero() {
           <span className="h-[1px] w-10 bg-primary/40" />
         </div>
 
-        <h1 className="mb-4 flex flex-col items-center">
-          <span className="flex items-baseline">
-            <motion.span
-              initial={{ opacity: 0, scale: 0.6 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.9, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              className="text-primary text-glow-strong"
-              style={{
-                fontFamily: "var(--font-devanagari)",
-                fontSize: "clamp(5rem, 15vw, 12rem)",
-                lineHeight: 0.9,
-              }}
-            >
-              अ
-            </motion.span>
-            <motion.span
-              initial={{ opacity: 0, x: -12 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.7 }}
-              className="font-extrabold tracking-tighter"
-              style={{ fontSize: "clamp(4rem, 12vw, 10rem)", lineHeight: 0.9, fontFamily: "var(--font-heading)" }}
-            >
-              vinya
-            </motion.span>
-          </span>
+        <h1 className="mb-4 flex items-baseline justify-center gap-1.5 flex-wrap">
           <motion.span
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 0.55 }}
+            initial={{ opacity: 0, scale: 0.6 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.9, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            className="text-primary text-glow-strong"
+            style={{
+              fontFamily: "var(--font-devanagari)",
+              fontSize: "clamp(4.5rem, 12vw, 9.5rem)",
+              lineHeight: 0.9,
+            }}
+          >
+            अ
+          </motion.span>
+          <motion.span
+            initial={{ opacity: 0, x: -12 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.7 }}
+            className="font-extrabold tracking-tighter"
+            style={{ fontSize: "clamp(3.8rem, 10vw, 8rem)", lineHeight: 0.9, fontFamily: "var(--font-heading)" }}
+          >
+            vinya
+          </motion.span>
+          <motion.span
+            initial={{ opacity: 0, x: -6 }}
+            animate={{ opacity: 0.65, x: 0 }}
             transition={{ delay: 1, duration: 0.6 }}
-            className="italic font-semibold tracking-tight -mt-2"
-            style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)", fontFamily: "var(--font-heading)" }}
+            className="italic font-bold tracking-tight text-primary/80"
+            style={{ fontSize: "clamp(2rem, 5vw, 4rem)", fontFamily: "var(--font-heading)" }}
           >
             &apos;26
           </motion.span>
