@@ -16,7 +16,7 @@ export function Logo({ size = "md" }: { size?: "sm" | "md" | "lg" }) {
         अ
       </span>
       <span className="font-mono text-xs tracking-[0.2em] uppercase text-foreground/90">
-        vinya &apos;26
+        vinya 2.0
       </span>
     </Link>
   );

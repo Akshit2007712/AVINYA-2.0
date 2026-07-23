@@ -6,16 +6,16 @@ import { AboutBannerCard } from "@/components/sections/BannerHeroSection";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About · अvinya '26" },
+      { title: "About · अvinya 2.0" },
       {
         name: "description",
         content:
-          "About अvinya '26 — the story, the vision, and the community behind the flagship college tech festival.",
+          "About अvinya 2.0 — the story, the vision, and the community behind the flagship college tech festival.",
       },
-      { property: "og:title", content: "About · अvinya '26" },
+      { property: "og:title", content: "About · अvinya 2.0" },
       {
         property: "og:description",
-        content: "The story behind अvinya '26.",
+        content: "The story behind अvinya 2.0.",
       },
     ],
   }),

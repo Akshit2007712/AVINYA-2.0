@@ -55,7 +55,7 @@ export function Preloader() {
               transition={{ delay: 0.8, duration: 0.5 }}
               className="text-2xl md:text-3xl italic"
             >
-              &apos;26
+              2.0
             </motion.span>
           </motion.div>
 

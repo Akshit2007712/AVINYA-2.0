@@ -73,14 +73,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "अvinya '26 — Infinity Unleashed" },
+      { title: "अvinya 2.0 — Infinity Unleashed" },
       {
         name: "description",
         content:
-          "अvinya '26 — the flagship college tech festival. Three days of hackathons, robotics, drone racing, and design at the intersection of engineering and imagination.",
+          "अvinya 2.0 — the flagship college tech festival. Three days of hackathons, robotics, drone racing, and design at the intersection of engineering and imagination.",
       },
       { name: "theme-color", content: "#050505" },
-      { property: "og:title", content: "अvinya '26 — Infinity Unleashed" },
+      { property: "og:title", content: "अvinya 2.0 — Infinity Unleashed" },
       {
         property: "og:description",
         content:
