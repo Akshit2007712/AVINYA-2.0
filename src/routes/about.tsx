@@ -65,10 +65,10 @@ function AboutPage() {
           {/* Right Side: Description */}
           <div className="lg:col-span-7 space-y-6 text-muted-foreground text-base leading-relaxed">
             <p>
-              <strong className="text-foreground">अVINYA</strong>, The Annual Tech Fest of <span className="text-foreground font-semibold">Guru Tegh Bahadur 4th Centenary Engineering College</span>, is a distinguished event celebrating innovation, knowledge, and creativity. <strong className="text-foreground">अVINYA</strong> means &quot;Innovation,&quot; embodying the fest&apos;s mission to offer a platform for students to engage with emerging technologies through a range of exciting events.
+              <strong className="text-foreground">अVINYA</strong>, The Annual Tech Fest organised by <span className="text-foreground font-semibold">The Empirical Society</span>, the first technical society of <span className="text-foreground font-semibold">Guru Tegh Bahadur 4th Centenary Engineering College</span>, is a distinguished event celebrating innovation, knowledge, and creativity. <strong className="text-foreground">अVINYA</strong> means &quot;Innovation,&quot; embodying the fest&apos;s mission to offer a platform for students to engage with emerging technologies through a range of exciting events.
             </p>
             <p>
-              Guided by our college motto, <em className="text-foreground font-medium">&apos;Fostering Dreams, Forging Futures,&apos;</em> <strong className="text-foreground">अVINYA</strong> focuses on developing technical, communication, and presentation skills. This year marks the second edition, now an inter-college event, welcoming participants from various institutions to collaborate and showcase their abilities.
+              Guided by our college motto, <em className="text-foreground font-medium">&apos;Fostering Dreams, Forging Futures,&apos;</em> <strong className="text-foreground">अVINYA</strong> focuses on developing technical, communication, and presentation skills. This year marks the fourth edition, now an inter-college event, welcoming participants from various institutions to collaborate and showcase their abilities.
             </p>
           </div>
         </motion.div>

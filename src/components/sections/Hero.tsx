@@ -73,7 +73,7 @@ export function Hero() {
           transition={{ delay: 1.1, duration: 0.7 }}
           className="max-w-2xl mx-auto text-sm md:text-base text-muted-foreground mb-10 leading-relaxed"
         >
-          <strong className="text-foreground">अVINYA</strong>, The Annual Tech Fest of Guru Tegh Bahadur 4th Centenary Engineering College, is a distinguished event celebrating innovation, knowledge, and creativity.
+          <strong className="text-foreground">अVINYA</strong>, The Annual Tech Fest organised by <span className="text-foreground font-semibold">The Empirical Society</span>, the first technical society of <span className="text-foreground font-semibold">Guru Tegh Bahadur 4th Centenary Engineering College</span>, is a distinguished event celebrating innovation, knowledge, and creativity.
         </motion.p>
 
         <motion.div
