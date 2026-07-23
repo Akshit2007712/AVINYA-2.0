@@ -157,7 +157,7 @@ export function StaffSections() {
         cols="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl"
       />
       <CategoryBlock title="Mentors" members={mentors} size="md" />
-      <CategoryBlock title="Fest Heads" members={heads} size="md" />
+      <CategoryBlock title="Heads: The Empirical Society" members={heads} size="md" />
     </div>
   );
 }
