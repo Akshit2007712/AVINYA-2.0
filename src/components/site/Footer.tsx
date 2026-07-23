@@ -8,7 +8,7 @@ export function Footer() {
         <div className="flex flex-col items-center md:items-start gap-2">
           <Logo />
           <p className="text-[10px] font-mono text-muted-foreground tracking-widest uppercase">
-            © 2026 · Faculty of Technology
+            © 2026 · Guru Tegh Bahadur 4th Centenary College
           </p>
         </div>
 
