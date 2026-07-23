@@ -53,10 +53,10 @@ function MemberCard({ m, i, size = "md" }: { m: Member; i: number; size?: "lg" |
       </div>
       <div className="p-4 flex flex-col flex-1">
         <h3
-          className="text-base font-bold leading-snug"
+          className="text-base font-bold leading-snug uppercase tracking-wide"
           style={{ fontFamily: "var(--font-heading)" }}
         >
-          {m.name}
+          {m.name.toUpperCase()}
         </h3>
         {m.role && (
           <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.2em] text-primary">

@@ -62,8 +62,8 @@ export const EVENTS: Event[] = [
     venue: "Cyber Lab 01"
   },
   {
-    slug: "thinkversa",
-    title: "THINKVERSA",
+    slug: "thinkverse",
+    title: "THINKVERSE",
     category: "Ideation",
     short: "Cross-functional collaborative solution framework brainstorming space. Bring architectural strategies targeting space sc...",
     long: "Cross-functional collaborative solution framework brainstorming space. Bring architectural strategies targeting space science...",
@@ -92,21 +92,11 @@ export const EVENTS: Event[] = [
     venue: "Cyber Lab 01"
   },
   {
-    slug: "cuisine",
-    title: "CUISINE",
-    category: "Creative",
+    slug: "cuisine-cosmos",
+    title: "CUISINE COSMOS",
+    category: "Creative & Culinary",
     short: "Where molecular culinary science interacts directly with engineering workflows. Build and evaluate aesthetic food matrix...",
     long: "Where molecular culinary science interacts directly with engineering workflows. Build and evaluate aesthetic food matrix...",
-    image: eventHack,
-    date: "04 MAR",
-    venue: "Cyber Lab 01"
-  },
-  {
-    slug: "cosmos",
-    title: "COSMOS",
-    category: "AI & Research",
-    short: "Aerospace analytics and orbital mechanics evaluation playground. Submit structural concepts detailing satellite tracking...",
-    long: "Aerospace analytics and orbital mechanics evaluation playground. Submit structural concepts detailing satellite tracking...",
     image: eventHack,
     date: "04 MAR",
     venue: "Cyber Lab 01"
