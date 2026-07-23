@@ -65,7 +65,7 @@ export function Hero() {
             className="italic font-semibold tracking-tight -mt-2"
             style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)", fontFamily: "var(--font-heading)" }}
           >
-            2.0
+            &apos;26
           </motion.span>
         </h1>
 
