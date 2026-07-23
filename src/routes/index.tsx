@@ -9,6 +9,8 @@ import { SponsorsMarquee } from "@/components/sections/SponsorsMarquee";
 import { ContactForm } from "@/components/sections/ContactForm";
 import { StaffSections, TeamsSection } from "@/components/sections/TeamSections";
 
+import { AboutBannerCard } from "@/components/sections/BannerHeroSection";
+
 export const Route = createFileRoute("/")({
   component: HomePage,
 });
@@ -42,6 +44,34 @@ function HomePage() {
   return (
     <SiteShell>
       <Hero />
+
+      {/* About Section */}
+      <section id="about" className="py-24 px-6 md:px-10 max-w-7xl mx-auto border-b border-white/5">
+        <SectionHeader
+          eyebrow="About The Fest"
+          title={
+            <>
+              Fostering Dreams, <span className="text-primary">Forging Futures</span>
+            </>
+          }
+        />
+        <div className="grid lg:grid-cols-12 gap-10 items-center">
+          {/* Left Side: Compact Banner Card */}
+          <div className="lg:col-span-5">
+            <AboutBannerCard />
+          </div>
+
+          {/* Right Side: Description Text */}
+          <div className="lg:col-span-7 space-y-6 text-muted-foreground text-base leading-relaxed">
+            <p>
+              <strong className="text-foreground">अVINYA</strong>, The Annual Tech Fest of <span className="text-foreground font-semibold">Guru Tegh Bahadur 4th Centenary Engineering College</span>, is a distinguished event celebrating innovation, knowledge, and creativity. <strong className="text-foreground">अVINYA</strong> means &quot;Innovation,&quot; embodying the fest&apos;s mission to offer a platform for students to engage with emerging technologies through a range of exciting events.
+            </p>
+            <p>
+              Guided by our college motto, <em className="text-foreground font-medium">&apos;Fostering Dreams, Forging Futures,&apos;</em> <strong className="text-foreground">अVINYA</strong> focuses on developing technical, communication, and presentation skills. This year marks the second edition, now an inter-college event, welcoming participants from various institutions to collaborate and showcase their abilities.
+            </p>
+          </div>
+        </div>
+      </section>
 
       {/* Featured Events */}
       <section id="events" className="py-24 px-6 md:px-10 max-w-7xl mx-auto">

@@ -53,7 +53,7 @@ export function Hero() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.7 }}
               className="font-extrabold tracking-tighter"
-              style={{ fontSize: "clamp(4rem, 12vw, 10rem)", lineHeight: 0.9 }}
+              style={{ fontSize: "clamp(4rem, 12vw, 10rem)", lineHeight: 0.9, fontFamily: "var(--font-heading)" }}
             >
               vinya
             </motion.span>
@@ -62,8 +62,8 @@ export function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 0.55 }}
             transition={{ delay: 1, duration: 0.6 }}
-            className="italic font-medium tracking-tight -mt-2"
-            style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)" }}
+            className="italic font-semibold tracking-tight -mt-2"
+            style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)", fontFamily: "var(--font-heading)" }}
           >
             2.0
           </motion.span>
@@ -73,10 +73,9 @@ export function Hero() {
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.1, duration: 0.7 }}
-          className="max-w-xl mx-auto text-sm md:text-base text-muted-foreground mb-10 leading-relaxed"
+          className="max-w-2xl mx-auto text-sm md:text-base text-muted-foreground mb-10 leading-relaxed"
         >
-          A three-day confluence of engineering, design, and imagination.
-          Step into the planetarium.
+          <strong className="text-foreground">अVINYA</strong>, The Annual Tech Fest of Guru Tegh Bahadur 4th Centenary Engineering College, is a distinguished event celebrating innovation, knowledge, and creativity.
         </motion.p>
 
         <motion.div

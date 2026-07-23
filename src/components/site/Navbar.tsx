@@ -10,6 +10,7 @@ const links = [
   { to: "/events", label: "Events" },
   { to: "/timeline", label: "Timeline" },
   { to: "/gallery", label: "Gallery" },
+  { to: "/#teams", label: "Meet The Team" },
   { to: "/sponsors", label: "Sponsors" },
   { to: "/contact", label: "Contact" },
 ] as const;
@@ -42,7 +43,19 @@ export function Navbar() {
 
         <div className="hidden lg:flex items-center gap-8 text-[11px] font-mono uppercase tracking-[0.2em]">
           {links.map((l) => {
-            const active = pathname === l.to;
+            const isHash = l.to.includes("#");
+            const active = !isHash && pathname === l.to;
+            if (isHash) {
+              return (
+                <a
+                  key={l.to}
+                  href={l.to}
+                  className="relative transition-colors text-muted-foreground hover:text-foreground"
+                >
+                  {l.label}
+                </a>
+              );
+            }
             return (
               <Link
                 key={l.to}
@@ -89,15 +102,26 @@ export function Navbar() {
             className="lg:hidden absolute top-full left-0 right-0 glass-panel-strong border-t border-white/5"
           >
             <div className="px-6 py-6 flex flex-col gap-4">
-              {links.map((l) => (
-                <Link
-                  key={l.to}
-                  to={l.to}
-                  className="text-sm font-mono uppercase tracking-[0.2em] text-muted-foreground hover:text-primary transition-colors"
-                >
-                  {l.label}
-                </Link>
-              ))}
+              {links.map((l) =>
+                l.to.includes("#") ? (
+                  <a
+                    key={l.to}
+                    href={l.to}
+                    onClick={() => setOpen(false)}
+                    className="text-sm font-mono uppercase tracking-[0.2em] text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    {l.label}
+                  </a>
+                ) : (
+                  <Link
+                    key={l.to}
+                    to={l.to}
+                    className="text-sm font-mono uppercase tracking-[0.2em] text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    {l.label}
+                  </Link>
+                )
+              )}
             </div>
           </motion.div>
         )}

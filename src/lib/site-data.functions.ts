@@ -3,8 +3,9 @@ import { createClient } from "@supabase/supabase-js";
 import type { Database } from "@/integrations/supabase/types";
 
 function publicClient() {
-  const key = process.env.SUPABASE_PUBLISHABLE_KEY!;
-  return createClient<Database>(process.env.SUPABASE_URL!, key, {
+  const url = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL || "https://ivpzuptfcwezgqjnsrgs.supabase.co";
+  const key = process.env.SUPABASE_PUBLISHABLE_KEY || process.env.VITE_SUPABASE_PUBLISHABLE_KEY || "sb_publishable_Ws29JaYkhL0Shd2ef8F05Q_uijwUGqk";
+  return createClient<Database>(url, key, {
     auth: { persistSession: false, autoRefreshToken: false },
     global: {
       fetch: (input, init) => {

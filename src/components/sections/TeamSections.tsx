@@ -34,32 +34,37 @@ function MemberCard({ m, i, size = "md" }: { m: Member; i: number; size?: "lg" |
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.6, delay: (i % 4) * 0.06 }}
-      className="group glass-panel overflow-hidden hover-glow transition-all"
+      className="group glass-panel overflow-hidden hover-glow transition-all flex flex-col"
     >
-      <div className={`relative w-full ${dims} overflow-hidden bg-white/5`}>
+      <div className={`relative w-full ${dims} overflow-hidden bg-white/5 flex-shrink-0`}>
         {m.image_url ? (
           <img
             src={m.image_url}
             alt={m.name}
             loading="lazy"
-            className="w-full h-full object-cover grayscale-[0.25] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+            className="w-full h-full object-cover object-top grayscale-[0.25] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center text-primary/50">
             <User className="size-12" />
           </div>
         )}
-        <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/10 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
       </div>
-      <div className="p-4">
-        <h3 className="text-base font-bold tracking-tight leading-tight">{m.name}</h3>
+      <div className="p-4 flex flex-col flex-1">
+        <h3
+          className="text-base font-bold leading-snug"
+          style={{ fontFamily: "var(--font-heading)" }}
+        >
+          {m.name}
+        </h3>
         {m.role && (
-          <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.25em] text-primary">
+          <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.2em] text-primary">
             {m.role}
           </p>
         )}
         {m.bio && (
-          <p className="mt-2 text-xs text-muted-foreground line-clamp-3">{m.bio}</p>
+          <p className="mt-2 text-xs text-muted-foreground leading-relaxed line-clamp-3">{m.bio}</p>
         )}
       </div>
     </motion.div>
@@ -105,9 +110,20 @@ function CategoryBlock({
   if (!members.length) return null;
   return (
     <div>
-      <h3 className="mb-6 font-mono text-[11px] uppercase tracking-[0.35em] text-muted-foreground">
-        {title}
-      </h3>
+      {/* Prominent category divider */}
+      <div className="flex items-center gap-4 mb-8">
+        <div className="w-1 h-8 bg-primary rounded-full flex-shrink-0" />
+        <h3
+          className="text-2xl md:text-3xl font-bold tracking-tight"
+          style={{ fontFamily: "var(--font-heading)" }}
+        >
+          {title}
+        </h3>
+        <div className="flex-1 h-[1px] bg-white/10" />
+        <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-primary flex-shrink-0">
+          {members.length.toString().padStart(2, "0")} members
+        </span>
+      </div>
       <div className={cols ?? "grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"}>
         {members.map((m, i) => (
           <MemberCard key={m.id} m={m} i={i} size={size} />
@@ -133,12 +149,12 @@ export function StaffSections() {
   }
 
   return (
-    <div className="space-y-16">
+    <div className="space-y-20">
       <CategoryBlock
         title="Faculty Coordinators"
         members={faculty}
         size="lg"
-        cols="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto"
+        cols="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl"
       />
       <CategoryBlock title="Mentors" members={mentors} size="md" />
       <CategoryBlock title="Fest Heads" members={heads} size="md" />
@@ -182,11 +198,17 @@ export function TeamsSection() {
         const members = all.filter((m) => m.category === cat);
         return (
           <div key={cat}>
-            <div className="flex items-baseline justify-between mb-6 border-b border-white/5 pb-4">
-              <h3 className="text-2xl md:text-3xl font-bold tracking-tight">
+            {/* Prominent team name header */}
+            <div className="flex items-center gap-4 mb-8 border-b border-white/8 pb-5">
+              <div className="w-1 h-8 bg-primary rounded-full flex-shrink-0" />
+              <h3
+                className="text-2xl md:text-3xl font-bold tracking-tight"
+                style={{ fontFamily: "var(--font-heading)" }}
+              >
                 {TEAM_LABELS[cat]}
               </h3>
-              <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-primary">
+              <div className="flex-1 h-[1px] bg-white/10" />
+              <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-primary flex-shrink-0">
                 {members.length.toString().padStart(2, "0")} members
               </span>
             </div>
@@ -197,7 +219,7 @@ export function TeamsSection() {
                 ))}
               </div>
             ) : (
-              <p className="text-sm font-mono uppercase tracking-widest text-muted-foreground/60">
+              <p className="text-sm font-mono uppercase tracking-widest text-muted-foreground/60 pl-5">
                 Roster loading…
               </p>
             )}
